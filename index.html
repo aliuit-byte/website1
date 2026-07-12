@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next 110 IT Solutions</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --panel: #1e293b;
+    --border: #334155;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-soft: #cbd5e1;
+    --accent: #38bdf8;
+    --heading: #f8fafc;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.2rem 3rem 1.2rem;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 2.5rem 1rem 2rem 1rem;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+    color: var(--heading);
+  }
+  .hero p.tagline {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-strip {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .contact-item {
+    background-color: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+
+  .hero-image {
+    display: block;
+    max-width: 60%;
+    margin: 2rem auto 0 auto;
+    border-radius: 14px;
+  }
+  @media (max-width: 700px) {
+    .hero-image { max-width: 100%; }
+  }
+
+  /* Section headers */
+  .section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--heading);
+    margin-top: 2.5rem;
+    margin-bottom: 0.3rem;
+    border-left: 4px solid var(--accent);
+    padding-left: 0.7rem;
+  }
+  .section-sub {
+    color: var(--text-muted);
+    margin-bottom: 1.3rem;
+  }
+
+  /* Service cards */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  @media (max-width: 800px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background-color: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.3rem;
+    transition: transform 0.15s ease, border 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border: 1px solid var(--accent);
+  }
+  .card h3 {
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin: 0 0 0.4rem 0;
+  }
+  .card p {
+    color: var(--text-soft);
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
+  /* Contact form */
+  form {
+    background-color: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+    margin-bottom: 1.2rem;
+  }
+
+  button {
+    background-color: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+    border-radius: 10px;
+    border: none;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  button:hover {
+    filter: brightness(1.08);
+  }
+
+  #form-status {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    display: none;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+  }
+  #form-status.success {
+    display: block;
+    background-color: rgba(56, 189, 248, 0.12);
+    border: 1px solid var(--accent);
+    color: var(--text);
+  }
+  #form-status.warning {
+    display: block;
+    background-color: rgba(250, 204, 21, 0.1);
+    border: 1px solid #facc15;
+    color: #fde68a;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.2rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Next 110 IT Solutions</h1>
+    <p class="tagline">Reliable IT products, networking, and support — for businesses that can't afford downtime.</p>
+    <div class="contact-strip">
+      <div class="contact-item">📞 0300-1234567</div>
+      <div class="contact-item">📍 123, North Nazimabad, Karachi</div>
+      <div class="contact-item">🕒 Mon–Sat, 10am–7pm</div>
+    </div>
+    <!-- Replace src below with your own image path, e.g. "static/IT Company.png" -->
+    <!-- <img class="hero-image" src="static/IT Company.png" alt="Next 110 IT Solutions"> -->
+  </div>
+
+  <!-- Services -->
+  <div class="section-title">What We Do</div>
+  <div class="section-sub">End-to-end IT products and support for schools, offices, and retail businesses.</div>
+
+  <div class="services-grid">
+    <div class="card">
+      <h3>🖥️ Hardware Supply</h3>
+      <p>Laptops, desktops, servers, printers, and networking gear — genuine products with warranty.</p>
+    </div>
+    <div class="card">
+      <h3>🌐 Networking & Wi-Fi</h3>
+      <p>LAN/WAN setup, structured cabling, access point placement, and VLAN configuration.</p>
+    </div>
+    <div class="card">
+      <h3>🛠️ On-site Support</h3>
+      <p>Fast on-site troubleshooting and repair for offices, schools, and retail branches.</p>
+    </div>
+    <div class="card">
+      <h3>📹 CCTV & Access Control</h3>
+      <p>Camera installation, DVR setup, and biometric access systems.</p>
+    </div>
+    <div class="card">
+      <h3>☁️ Network Monitoring</h3>
+      <p>Proactive monitoring and alerting to catch issues before they cause downtime.</p>
+    </div>
+    <div class="card">
+      <h3>🔧 Maintenance Contracts</h3>
+      <p>Annual maintenance packages so your systems stay online year-round.</p>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="section-title">Get In Touch</div>
+  <div class="section-sub">Have a project or a breakdown that needs fixing? Send us a message.</div>
+
+  <form id="contact-form">
+    <div class="form-row">
+      <div>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+      </div>
+    </div>
+    <label for="message">How can we help?</label>
+    <textarea id="message" name="message"></textarea>
+    <button type="submit">Send Message</button>
+    <div id="form-status"></div>
+  </form>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2026 Next 110 IT Solutions · 123, North Nazimabad, Karachi · 0300-1234567
+  </div>
+
+</div>
+
+<script>
+  // Basic client-side validation. Since this is a static HTML file, the form
+  // does not actually send anywhere yet — wire this up to your backend,
+  // a form service (e.g. Formspree), or a mailto: link as needed.
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const status = document.getElementById('form-status');
+
+    if (name && phone && message) {
+      status.textContent = "Thanks! We've received your message and will get back to you shortly.";
+      status.className = 'success';
+      this.reset();
+    } else {
+      status.textContent = 'Please fill in all fields before submitting.';
+      status.className = 'warning';
+    }
+  });
+</script>
+
+</body>
+</html>
